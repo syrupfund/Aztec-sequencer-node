@@ -73,6 +73,7 @@ sudo systemctl enable docker
 # Install AZTEC CLI
 bash -i <(curl -s https://install.aztec.network)
 ```
+(Press y, then Enter)
 ```bash
 # Add AZTEC to PATH
 echo 'export PATH=$PATH:$HOME/.aztec/bin' >> ~/.bashrc
