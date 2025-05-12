@@ -31,9 +31,17 @@ for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do
 ```bash
 # Set up the repository
 sudo apt-get update
+```
+```bash
 sudo apt-get install -y ca-certificates curl gnupg
+```
+```bash
 sudo install -m 0755 -d /etc/apt/keyrings
+```
+```bash
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+```
+```bash
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 ```
 ```bash
@@ -43,6 +51,8 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.
 ```bash
 # Install Docker
 sudo apt-get update
+```
+```bash
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 ```bash
@@ -52,6 +62,8 @@ sudo docker run hello-world
 ```bash
 # Start and enable Docker service
 sudo systemctl start docker
+```
+```bash
 sudo systemctl enable docker
 ```
 
