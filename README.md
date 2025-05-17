@@ -154,7 +154,34 @@ tmux new -s aztec-node
 # To reattach later, use: tmux attach -t aztec-node
 ```
 
-## Step 9: Register as a Validator
+## Step 9: Get apprentice role on discord
+Step 1: Get the latest proven block number:
+```bash
+curl -s -X POST -H 'Content-Type: application/json' \
+-d '{"jsonrpc":"2.0","method":"node_getL2Tips","params":[],"id":67}' \
+http://localhost:8080 | jq -r ".result.proven.number"
+```
+
+Save this block number for the next steps
+Example output: 20905
+Step 2: Generate your sync proof
+```bash
+curl -s -X POST -H 'Content-Type: application/json' \
+-d '{"jsonrpc":"2.0","method":"node_getArchiveSiblingPath","params":["BLOCK_NUMBER","BLOCK_NUMBER"],"id":67}' \
+http://localhost:8080 | jq -r ".result"
+```
+
+Replace 2x BLOCK_NUMBER with your number
+Step 3: Register with Discord
+
+Type the following command in this Discord server: /operator start
+After typing the command, Discord will display option fields that look like this:
+address: Your validator address (Ethereum Address)
+block-number: Block number for verification (Block number from Step 1)
+proof: Your sync proof (base64 string from Step 2)
+Then you'll get your Apprentice Role
+
+## Step 10: Register as a Validator
 
 Once your node is fully synced, register as a validator:
 
@@ -170,7 +197,7 @@ aztec add-l1-validator \
 
 Note: There is a daily quota for validators. If registration fails with `ValidatorQuotaFilledUntil`, try again after the timestamp indicated.
 
-## Step 10: Monitor Your Node
+## Step 11: Monitor Your Node
 
 Check your node's logs, if running directly the logs will be displayed in your terminal
 ```bash
@@ -183,7 +210,7 @@ ls -la ~/aztec-data
 # Look for log files in this directory
 ```
 
-## Step 11: Verify Node's running
+## Step 12: Verify Node's running
 Find your Node's Peer ID:
 ```bash
 sudo docker logs $(docker ps -q --filter ancestor=aztecprotocol/aztec:alpha-testnet | head -n 1) 2>&1 | grep -i "peerId" | grep -o '"peerId":"[^"]*"' | cut -d'"' -f4 | head -n 1
