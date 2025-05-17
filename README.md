@@ -221,6 +221,14 @@ Note: It might takes some hours/days for your node to show up in Nethermind Expl
 
 ## Troubleshooting
 
+### Basic command check to verify if node's running
+bash```
+ps aux | grep aztec
+```
+bash```
+docker ps | grep aztec
+```
+
 ### If Your Node Fails to Sync
 
 ```bash
