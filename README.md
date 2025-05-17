@@ -183,6 +183,15 @@ ls -la ~/aztec-data
 # Look for log files in this directory
 ```
 
+## Step 11: Verify Node's running
+Find your Node's Peer ID:
+```bash
+sudo docker logs $(docker ps -q --filter ancestor=aztecprotocol/aztec:alpha-testnet | head -n 1) 2>&1 | grep -i "peerId" | grep -o '"peerId":"[^"]*"' | cut -d'"' -f4 | head -n 1
+```
+This reveals your Node's Peer ID, Now search it on Nethermind Explorer (https://aztec.nethermind.io/)
+Note: It might takes some hours/days for your node to show up in Nethermind Explorer after it fully synced.
+
+
 ## Troubleshooting
 
 ### If Your Node Fails to Sync
