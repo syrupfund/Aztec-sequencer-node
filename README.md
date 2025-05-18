@@ -156,6 +156,7 @@ tmux new -s aztec-node
 
 ## Step 9: Get apprentice role on discord
 Step 1: Get the latest proven block number:
+
 ```bash
 curl -s -X POST -H 'Content-Type: application/json' \
 -d '{"jsonrpc":"2.0","method":"node_getL2Tips","params":[],"id":67}' \
@@ -165,6 +166,7 @@ http://localhost:8080 | jq -r ".result.proven.number"
 Save this block number for the next steps
 Example output: 20905
 Step 2: Generate your sync proof
+
 ```bash
 curl -s -X POST -H 'Content-Type: application/json' \
 -d '{"jsonrpc":"2.0","method":"node_getArchiveSiblingPath","params":["BLOCK_NUMBER","BLOCK_NUMBER"],"id":67}' \
@@ -222,10 +224,12 @@ Note: It might takes some hours/days for your node to show up in Nethermind Expl
 ## Troubleshooting
 
 ### Basic command check to verify if node's running
-bash```
+
+```bash
 ps aux | grep aztec
 ```
-bash```
+
+```bash
 docker ps | grep aztec
 ```
 
